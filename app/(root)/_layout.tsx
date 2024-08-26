@@ -1,9 +1,12 @@
-import React from 'react'
+import { Stack } from "expo-router";
+import React from "react";
 
-const AppRoot = () => {
+const Layout = () => {
   return (
-    <div>_layout</div>
-  )
-}
+    <Stack>
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+    </Stack>
+  );
+};
 
-export default AppRoot
+export default Layout;

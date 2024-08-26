@@ -1,10 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Text, TouchableOpacity, View,Image } from "react-native";
 import { router } from "expo-router";
 import Swiper from "react-native-swiper";
 import { onboarding } from "@/constants";
 import CustomButton from "@/components/CustomButton";
+import { fetchAPI } from "@/lib/fetch";
 
 const Welcome = () => {
 
@@ -13,6 +14,18 @@ const Welcome = () => {
   const [hideNext,setHideNext] = useState(false);
   
   const isLastSlide = activeIndex === onboarding.length - 1;
+
+
+  const getTestAPI = async () => {
+    const response = await fetchAPI('/(api)/test', {
+      method: 'GET'
+    });
+    
+
+    return response;
+  }
+
+   
 
   
 

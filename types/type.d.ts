@@ -137,3 +137,21 @@ declare interface DriverCardProps {
     selected: number;
     setSelected: () => void;
 }
+
+declare interface VerificationProps {   
+    state: "pending"| "success" | "default" | "failed" | undefined,
+    error: string,
+    code: string,
+}
+
+declare interface SignUpProps {
+    name: string,
+    email: string,
+    password: string,
+}
+
+
+declare interface SignInProps {
+    email: string,
+    password: string,
+}
