@@ -1,0 +1,16 @@
+import RideLayout from '@/components/RideLayout';
+import { useLocationStore } from '@/store'
+import React from 'react'
+import { View,Text } from 'react-native'
+
+const FindRide = () => {
+  const {userAddress,destinationAddress,setDestinationLocation,setUserLocation} = useLocationStore();
+  return (
+    <RideLayout>
+      <Text className='text-2xl'>You are here: {userAddress}</Text>
+      <Text className='text-2xl'>You are going to {destinationAddress}</Text>
+    </RideLayout>
+  )
+}
+
+export default FindRide

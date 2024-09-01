@@ -31,9 +31,13 @@ const useSignInHook = () => {
       })
 
       if (signInAttempt.status === 'complete') {
+        
         await setActive({ session: signInAttempt.createdSessionId })
         router.replace(toHome);
-      } else {
+
+      } 
+      else {
+        
         // See https://clerk.com/docs/custom-flows/error-handling
         // for more info on error handling
         console.error(JSON.stringify(signInAttempt, null, 2))
