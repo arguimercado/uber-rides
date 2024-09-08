@@ -1,7 +1,7 @@
 import { icons } from "@/constants";
 import { calculateRegion, generateMarkersFromData } from "@/lib/map";
-import { drivers } from "@/mocks/driver";
-import { useLocationStore, userDriverStore } from "@/store";
+import { mockDrivers } from "@/mocks/driver";
+import { useLocationStore, useDriverStore } from "@/store";
 import { MarkerData } from "@/types/type";
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";
@@ -15,7 +15,7 @@ const Map = () => {
     destinationLongitude,
   } = useLocationStore();
 
-  const {selectedDriver,setDrivers} = userDriverStore();
+  const {drivers, selectedDriver,setDrivers} = useDriverStore();
 
   const region = calculateRegion({
     userLatitude,
@@ -28,18 +28,21 @@ const Map = () => {
 
   useEffect(() => {
     if(Array.isArray(drivers)) {
+      
       if(!userLatitude || !userLongitude)
         return;
 
       const newMarkers = generateMarkersFromData({
-        data: drivers,
+        data: mockDrivers,
         userLatitude,
         userLongitude
       });
-
-      setMarkers(newMarkers);
+      
+      setDrivers(newMarkers);
+      
     }
-  },[drivers])
+  },[mockDrivers])
+
 
   return (
     <MapView
@@ -52,7 +55,7 @@ const Map = () => {
       showsUserLocation={true}
       userInterfaceStyle="light"
     >
-      {markers.map((marker) => (
+      {drivers.map((marker) => (
         <Marker
           key={marker.id}
           coordinate={{

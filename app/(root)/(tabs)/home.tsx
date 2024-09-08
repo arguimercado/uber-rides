@@ -47,6 +47,7 @@ const Home = () => {
   const [hasPermission, setHasPermission] = useState(false);
 
   useEffect(() => {
+    
     const requestLocation = async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
 

@@ -6,7 +6,7 @@ export async function  POST(request: Request) {
         
         const sql = neon('postgresql://ride_db_owner:Pg2NrYUS3lsz@ep-morning-cake-a1rue3r5.ap-southeast-1.aws.neon.tech/ride_db?sslmode=require');
         const {name,email,clerkId} = await request.json();
-        console.log(name,email,clerkId);
+      
     
         if(!name || !email || !clerkId ) {
             return Response.json({
